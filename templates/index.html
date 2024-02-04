@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<style>
+    body {
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 39%;
+        margin-top: 11%;
+        background: black;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        width: 37%;
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid; */
+        padding: 8% 8%;
+        transition: all 0.5s ease;
+        /* background: rgb(255 255 255 / 10%); */
+        border-radius: 13%;
+        height: 107%;
+        background: #ffffff17;
+        box-shadow: 0 0 10px 5px #3498db;
+    }
+    
+    .form:hover {
+        box-shadow: 0 0 10px 8px #3498dbd3;
+        
+    }
+    
+    .form-select {
+        /* background: black; */
+        color: black;
+        background-color: #ffffff17;
+        box-shadow: 0 0 10px 2px #3498db;
+        
+    }
+    .form-select:hover{
+        box-shadow: 0 0 10px 5px #3498db;
+        
+    }
+    .button
+    {
+        width: 25%;
+        height: 25%;
+        font-size: 1.2rem;
+        padding: 5px 5px;
+        background: black;
+        border: white;
+        color: white;
+        border-radius: 12%;
+        box-shadow: 0 0 10px 5px #3498db;
+    }
+    #range-value{
+        margin: 0.5rem;
+    font-size: 1.2rem;
+    padding: 5px 5px;
+
+
+    }
+    .output{
+        margin: 2.3rem;
+        color: white;
+    }
+    .heading{
+        font-size: 2.1rem;
+    margin-top: -25%;
+    margin-bottom: 12%;
+    }
+    @media screen and (max-width: 600px) {
+        .form{
+            width: 85%;
+            margin: 5% 5%;
+        }
+        .button{    
+            font-size: 1rem;
+        }
+        .heading{
+            font-size: 1.6rem;
+    margin-top: -3%;
+    margin-bottom: 12%;
+        }
+}
+
+
+</style>
+
+<body>
+    <center>
+        <form method='POST' class="form" id="formm">
+     <h1 class="heading" id="heading">Temperature converter</h1>
+        <select class="form-select" aria-label="Default select example" name="from"  id="boxx">
+
+            <option selected value="0">From (select temperature)</option>
+            <option  value="1">fahrenheit</option>
+            <option value="2">celsius</option>
+            <option value="3">kelvin</option>
+        </select>
+        <label for="customRange1" class="form-label">Example range</label>
+        <input type="range" class="form-range" id="customRange1" name="number" oninput="updateRangeValue(this.value)"
+            max="1000" min="-200">
+        <div id="range-value" >Selected Value: 400</div>
+        <select class="form-select" aria-label="Default select example" name="to" id="boxx2">
+            <option selected value="0">To (select temperature)</option>
+            <option value="1">fahrenheit</option>
+            <option value="2">celsius</option>
+            <option value="3">kelvin</option>
+        </select>
+        <p class="output" id="output" >{{output}}</p>
+        <!-- <input type="color" id="colorPicker" onchange="changeBackgroundColor(this.value)"> -->
+        <button type="submit" class="button" id="button">submit</button>
+    </form></center>
+    <!-- <label for="exampleColorInput" class="form-label">Color picker</label> -->
+    <!-- <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"> -->
+</body>
+
+<script>
+    function updateRangeValue(value) {
+        document.getElementById('range-value').textContent = `Selected Value: ${value}`;
+    }
+    function changeBackgroundColor(color) {
+        // Get the content element by its id
+        var contentElement = document.getElementById("content");
+
+        // Change the background color dynamically
+        contentElement.style.backgroundColor = color;
+    }
+    function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        function updateBox() {
+            color = getRandomColor()
+            const box = document.getElementById('formm');
+            const box2 = document.getElementById('boxx');
+            const box3 = document.getElementById('boxx2');
+            const box4 = document.getElementById('button');
+            const box5 = document.getElementById('range-value');
+            const box6 = document.getElementById('output');
+            const box7 = document.getElementById('heading');
+            box.style.borderColor = color
+            box2.style.borderColor = color
+            box3.style.borderColor = color
+            box4.style.borderColor = color
+            box4.style.color = color
+            box3.style.color = color
+            box2.style.color = color
+            box5.style.color = color
+            box6.style.color = color
+            box7.style.color = color
+            box2.style.boxShadow = `0 0 10px 2px ${color}`;
+            box.style.boxShadow = `0 0 10px 5px ${color}`;
+            box3.style.boxShadow = `0 0 10px 2px ${color}`;
+            box4.style.boxShadow = `0 0 10px 2px ${color}`;
+        }
+    function updateselect() {
+        color = getRandomColor()    
+            const box = document.getElementById('boxx');
+            box.style.borderColor = color
+            box.style.boxShadow = `0 0 10px 5px ${color}`;
+        }
+
+        setInterval(updateBox, 3000);
+        // setInterval(updateselect, 3000);
+</script>
+
+</html>
